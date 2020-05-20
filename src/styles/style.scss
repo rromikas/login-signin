@@ -1,0 +1,111 @@
+$darkColor: rgb(134, 134, 134);
+$lightColor: #f6f6f6;
+$bglight: #f0f0f0;
+$convex: 12px 12px 24px #cfcfcf, -12px -12px 24px #ffffff;
+$concave: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
+  inset -3px -3px 5px 0 rgba(255, 255, 255, 0.34);
+$convex2: 3px 4px 6px rgba(0, 0, 0, 0.24),
+  -2px -2px 6px rgba(255, 255, 255, 0.35);
+$shifted: 3px 4px 6px rgba(0, 0, 0, 0.24), -2px -2px 6px rgba(0, 0, 0, 0.24);
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-size: cover;
+  background-position: center;
+  font-family: poppins !important;
+}
+
+.soft-btn {
+  box-shadow: $convex;
+  padding: 1rem !important;
+  border-radius: 40px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+}
+
+.bg-light {
+  background-color: $bglight;
+}
+
+.concave {
+  box-shadow: $concave;
+}
+
+.convex {
+  box-shadow: $convex;
+}
+
+.convex-2 {
+  box-shadow: $convex2;
+}
+
+.soft-input {
+  border-radius: 40px;
+  box-shadow: $concave;
+  padding: 1rem !important;
+  //   color: $darkColor;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: transparent;
+}
+
+.soft-box {
+  box-shadow: $convex2;
+  padding: 1rem !important;
+  border-radius: 40px;
+  //   color: $darkColor;
+}
+
+// .soft-btn:hover {
+//   transition: box-shadow 0.8s;
+//   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+// }
+
+.shift {
+  box-shadow: 7px 7px 19px rgba(0, 0, 0, 0.48);
+}
+
+.shn {
+  background: linear-gradient(
+    135deg,
+    rgba(2, 0, 36, 0) 4%,
+    rgba(40, 31, 187, 0) 28%,
+    rgba(255, 255, 255, 1) 48%,
+    rgba(8, 32, 136, 0) 71%,
+    rgba(0, 212, 255, 0) 100%
+  );
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  background-position: 200% 200%;
+  transition: background-position 1s;
+}
+
+.shn:hover {
+  transition: background-position 1s;
+  animation: shine 1s linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 200%;
+  }
+
+  100% {
+    background-position: -200% -200%;
+  }
+}
+
+.disable-select {
+  user-select: none;
+}
