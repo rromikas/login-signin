@@ -10,6 +10,7 @@ const Login = () => {
       className="w-100 overflow-auto"
       style={{
         background: "radial-gradient(at left top, #4c508f, #f37373)",
+        backgroundSize: "cover",
         minHeight: "100%",
       }}
     >

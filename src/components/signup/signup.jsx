@@ -10,6 +10,7 @@ const Signup = () => {
       className="w-100 overflow-auto"
       style={{
         background: "radial-gradient(at left top, #4c508f, #f37373)",
+        backgroundSize: "cover",
         minHeight: "100%",
       }}
     >
@@ -24,7 +25,9 @@ const Signup = () => {
                 "radial-gradient(circle at left, rgb(255, 140, 140), rgba(255, 140, 140, 0.5))",
             }}
           >
-            <BoyReading></BoyReading>
+            <div className="w-90">
+              <BoyReading></BoyReading>
+            </div>
           </div>
           <div
             className="col-12 col-sm-9 col-md-6 py-4 px-5 bg-light"

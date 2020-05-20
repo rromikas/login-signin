@@ -15,9 +15,10 @@ const handleResponse = (response) => {
 };
 
 const Facebook = ({ text }) => {
+  const appId = "267059971103306";
   return (
     <FacebookLogin
-      appId="267059971103306"
+      appId={appId}
       autoLoad={false}
       fields="name,email,picture"
       callback={(res) => {

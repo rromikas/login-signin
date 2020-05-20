@@ -1,6 +1,7 @@
-$darkColor: rgb(134, 134, 134);
-$lightColor: #f6f6f6;
-$bglight: #f0f0f0;
+$themeMain: #f37373;
+$themMainContrast: rgb(76, 80, 143);
+$themWhite: #f0f0f0;
+
 $convex: 12px 12px 24px #cfcfcf, -12px -12px 24px #f5f5f5;
 $concave: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2),
   inset -3px -3px 5px 0 rgba(255, 255, 255, 0.34);
@@ -24,7 +25,8 @@ body {
 
 .soft-btn {
   box-shadow: $convex;
-  padding: 1rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
   border-radius: 40px;
   outline: none;
   border: none;
@@ -34,7 +36,7 @@ body {
 }
 
 .bg-light {
-  background-color: $bglight;
+  background-color: $themWhite;
 }
 
 .concave {
@@ -108,4 +110,61 @@ body {
 
 .disable-select {
   user-select: none;
+}
+
+.borderless {
+  border: none;
+  outline: none;
+}
+
+$widths: 100;
+@mixin w-list {
+  @for $i from 0 through $widths {
+    .w-#{$i} {
+      width: #{$i}% !important;
+    }
+  }
+}
+
+@include w-list;
+
+.pointer {
+  cursor: pointer;
+}
+
+$heights: 100;
+@mixin h-list {
+  @for $i from 0 through $heights {
+    .h-#{$i} {
+      height: #{$i}% !important;
+    }
+  }
+}
+
+@include h-list;
+
+.pointer {
+  cursor: pointer;
+}
+
+.img-uploader {
+  position: absolute;
+  bottom: 0;
+  background: radial-gradient(at left top, $themeMainContrast, $themeMain);
+  height: 25%;
+  transition: height 0.4s ease-in-out;
+}
+
+.img-uploader:hover {
+  height: 45%;
+  transition: height 0.3s ease-in-out;
+}
+
+.font-light {
+  color: $themeMain;
+}
+
+.brdr-light {
+  border: 1px solid $themeMain;
+  outline: $themeMain;
 }
