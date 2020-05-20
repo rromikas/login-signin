@@ -18,7 +18,7 @@ const handleFailure = (err) => {
 const Google = ({ text }) => {
   return (
     <GoogleLogin
-      clientId="965635793119-nm7ur6ko4nmisbs11ci8ut4q46h0p6fa.apps.googleusercontent.com"
+      clientId="49004644590-v8t3iamk2h7a6r3flrkn3cjor47hrlkn.apps.googleusercontent.com"
       buttonText="Login"
       render={(renderProps) => (
         <div
