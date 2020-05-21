@@ -5,16 +5,21 @@ import { update, read } from "../../javascript/requests";
 import PhotoUploader from "./photoUploader";
 import history from "../../routing/history";
 
-const Profile = () => {
+const initialProfile = { name: "", photo: "", description: "" };
+
+const Profile = (props) => {
   const hiddenUploader = useRef(null);
-  const [user, setUser] = useState({ photo: "", name: "", description: "" });
+  const [user, setUser] = useState(
+    props.location.state ? props.location.state : initialProfile
+  );
   const [editIntro, setEditIntro] = useState(false);
 
   useEffect(() => {
     read((res) => {
       console.log(res);
       if (res.error) {
-        history.push({ pathname: "/login" });
+        alert(res.error);
+        // history.push("/login");
       } else {
         setUser((user) => Object.assign({}, user, res.data));
       }
@@ -22,9 +27,12 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="w-100 h-100 overflow-auto py-4 bg-theme">
-      <div style={{ maxWidth: "1200px" }} className="container-fluid">
-        <div className="row no-gutters justify-content-center shift bg-light">
+    <div className="w-100 h-100 overflow-auto py-4 px-2 bg-theme">
+      <div
+        style={{ maxWidth: "1200px", borderRadius: "15px", overflow: "hidden" }}
+        className="container-fluid"
+      >
+        <div className="row justify-content-center shift bg-light">
           <div
             className="col-12 col-sm-4 bg-light p-4"
             style={{
@@ -87,6 +95,7 @@ const Profile = () => {
                     onClick={() => {
                       setEditIntro(false);
                       update({ description: user.description });
+                      history.location.state.description = user.description;
                     }}
                   ></FaCheck>
                 ) : (
@@ -99,6 +108,7 @@ const Profile = () => {
               </div>
             </div>
             <textarea
+              spellCheck={false}
               disabled={!editIntro}
               className={`${
                 !editIntro ? "borderless " : "brdr-light "
@@ -109,11 +119,12 @@ const Profile = () => {
                 minHeight: "100px",
               }}
               value={user.description}
-              onChange={(e) =>
+              onChange={(e) => {
+                e.persist();
                 setUser((usr) =>
                   Object.assign({}, usr, { description: e.target.value })
-                )
-              }
+                );
+              }}
             ></textarea>
             <div
               className="w-100 d-none d-md-flex pr-4 justify-content-end mt-5 pb-2"

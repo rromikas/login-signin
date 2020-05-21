@@ -5,18 +5,23 @@ import GirlReading from "../../images/girlReading";
 import EmailForm from "./emailForm";
 import history from "../../routing/history";
 import { toast } from "react-toastify";
-const Login = () => {
+
+const Login = (props) => {
   return (
-    <div className="w-100 overflow-auto bg-theme">
-      <div style={{ maxWidth: "1200px" }} className="container-fluid my-4">
-        <div className="row no-gutters justify-content-center shift bg-light">
+    <div
+      className="w-100 overflow-auto bg-theme py-4 px-2"
+      style={{ minHeight: "100%" }}
+    >
+      <div
+        style={{ maxWidth: "1200px", borderRadius: "15px", overflow: "hidden" }}
+        className="container-fluid shift"
+      >
+        <div className="row justify-content-center bg-light">
           <div
-            className="col py-3 d-none d-md-block"
+            className="col py-3 d-none d-md-block image-bg-theme"
             style={{
               paddingLeft: "80px",
               paddingRight: "80px",
-              background:
-                "radial-gradient(circle at left, rgb(255, 140, 140), rgba(255, 140, 140, 0.5))",
             }}
           >
             <GirlReading></GirlReading>
@@ -47,7 +52,7 @@ const Login = () => {
               Or
             </div>
             <EmailForm></EmailForm>
-            <div className="text-center mt-5">
+            <div className="text-center mt-3">
               Forgot password?
               <span
                 className="btn-link"

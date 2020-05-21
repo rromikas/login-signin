@@ -1,10 +1,10 @@
 import { GoogleLogin } from "react-google-login";
-import React from "react";
+import React, { useState } from "react";
 import GoogleIcon from "./googleIcon";
 import { googleSingup } from "../../javascript/requests";
 import history from "../../routing/history";
 
-const handleResponse = (response, onError) => {
+const handleResponse = (response, onError, setLoading) => {
   var user = {
     accessToken: response.accessToken,
     name: response.profileObj.name,
@@ -12,14 +12,16 @@ const handleResponse = (response, onError) => {
     email: response.profileObj.email,
   };
 
+  setLoading(true); //show loading for user while waiting response from server
+
   googleSingup(user, (res) => {
-    console.log("google response", res);
+    setLoading(false); // hide loader
+
     if (res.error) {
       onError(res.error);
     } else {
-      console.log("token from google", res.token);
       localStorage["secret_token"] = res.token;
-      history.push({ pathname: "/profile" });
+      history.push("/profile", res.user);
     }
   });
 };
@@ -27,6 +29,7 @@ const handleResponse = (response, onError) => {
 const Google = ({ text, onError }) => {
   const clientId =
     "49004644590-v8t3iamk2h7a6r3flrkn3cjor47hrlkn.apps.googleusercontent.com";
+  const [loading, setLoading] = useState(false);
   return (
     <GoogleLogin
       clientId={clientId}
@@ -37,14 +40,14 @@ const Google = ({ text, onError }) => {
           disabled={renderProps.disabled}
           className="soft-btn py-3 px-4 d-flex justify-content-between align-items-center shn"
         >
-          <div>{text}</div>
+          <div>{loading ? "Loading..." : text}</div>
           <div className="convex-2" style={{ borderRadius: "50%" }}>
             <GoogleIcon size={32}></GoogleIcon>
           </div>
         </div>
       )}
       onSuccess={(res) => {
-        handleResponse(res, onError);
+        handleResponse(res, onError, setLoading);
       }}
       onFailure={(er) => {
         onError(er);

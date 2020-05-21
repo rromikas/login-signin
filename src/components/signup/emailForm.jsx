@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import CheckBox from "./checkbox";
 import history from "../../routing/history";
-import { singup, signup } from "../../javascript/requests";
+import { signup } from "../../javascript/requests";
 
 const EmailForm = () => {
   const handleSubmit = (e) => {
@@ -9,24 +9,28 @@ const EmailForm = () => {
     if (!checked) {
       setError("Agree with terms and conditions");
     } else {
+      setLoading(true);
       let user = {};
       const formData = new FormData(e.target);
       for (var [key, value] of formData.entries()) {
         user[key] = value;
       }
       signup(user, (res) => {
+        setLoading(false);
         console.log(res);
         if (res.error) {
           setError(res.error);
         } else {
-          history.push({ pathname: "/profile" });
+          localStorage["secret_token"] = res.token;
+          history.push({ pathname: "/login" });
         }
       });
     }
   };
 
   const [checked, setChecked] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState("none");
+  const [loading, setLoading] = useState(false);
   const submitBtn = useRef(null);
   return (
     <form onSubmit={handleSubmit}>
@@ -77,16 +81,18 @@ const EmailForm = () => {
       <button
         ref={submitBtn}
         type="submit"
-        className={`soft-btn mt-4${error !== "" ? " reject" : ""}`}
+        className={`soft-btn mt-4${error !== "none" ? " reject" : ""}`}
         style={{ color: "white", background: "#ff8c8c" }}
       >
-        Sign Up
+        {loading ? "loading..." : "Sign Up"}
       </button>
-      {error !== "" && (
-        <div className="mt-2 text-center" style={{ color: "red" }}>
-          {error}
-        </div>
-      )}
+
+      <div
+        className="mt-2 text-center"
+        style={{ color: "red", opacity: error !== "none" ? 1 : 0 }}
+      >
+        {error}
+      </div>
     </form>
   );
 };

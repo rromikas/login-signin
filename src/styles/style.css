@@ -73,8 +73,8 @@ body {
 }
 
 .shift {
-  -webkit-box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.48);
-          box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 2px 2px 22px rgba(0, 0, 0, 0.38);
+          box-shadow: 2px 2px 22px rgba(0, 0, 0, 0.38);
 }
 
 .shn {
@@ -942,7 +942,7 @@ body {
 .img-uploader {
   position: absolute;
   bottom: 0;
-  background: radial-gradient(at left top, #4c508f, #f37373);
+  background: radial-gradient(at left top, #4c508f, #f88888);
   height: 25%;
   -webkit-transition: height 0.4s ease-in-out;
   transition: height 0.4s ease-in-out;
@@ -955,12 +955,12 @@ body {
 }
 
 .font-light {
-  color: #f37373;
+  color: #f88888;
 }
 
 .brdr-light {
-  border: 1px solid #f37373;
-  outline: #f37373;
+  border: 1px solid #f88888;
+  outline: #f88888;
 }
 
 .reject {
@@ -1023,7 +1023,11 @@ body {
 }
 
 .bg-theme {
-  background: radial-gradient(at left top, #4c508f, #f37373);
+  background: radial-gradient(at left top, #4c508f, #f88888);
   background-size: cover;
+}
+
+.image-bg-theme {
+  background: radial-gradient(circle at left, #f88888, #f7b9b9);
 }
 /*# sourceMappingURL=style.css.map */

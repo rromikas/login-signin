@@ -5,8 +5,8 @@ import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 import Profile from "./components/profile/profile";
 import TermsAndConditions from "./components/policies/termsAndConditions";
-import Test from "./components/test";
 import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
     <Router history={history}>
@@ -14,7 +14,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup}></Route>
         <Route exact path="/profile" component={Profile}></Route>
-        <Route exact path="/test" component={Test}></Route>
+        <Route exact path="/" component={Login}></Route>
         <Route
           exact
           path="/terms-and-conditions"

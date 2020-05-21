@@ -1,6 +1,7 @@
 import React from "react";
 
 function GirlReading() {
+  const clothesColor = "#8454a6";
   return (
     <div className="d-flex">
       <svg
@@ -63,7 +64,7 @@ function GirlReading() {
               transform="translate(-158.524 -143.926)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M330.323 291.926h171.834l-10.507-131.34a18.198 18.198 0 00-18.046-16.66H358.877a18.198 18.198 0 00-18.046 16.66z"
               transform="translate(-158.524 -143.926)"
             ></path>
@@ -73,7 +74,7 @@ function GirlReading() {
               transform="translate(-158.524 -143.926)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M569.272 564.474c9.135 36.302 5.203 69.506-28.813 95.576-40.799-11.246-67.934-38.381-84.49-77.818a19.684 19.684 0 0111.352-26.092 19.674 19.674 0 0121.659 5.582l40.031 46.204 18.78-46.589z"
               transform="translate(-158.524 -143.926)"
             ></path>
@@ -103,7 +104,7 @@ function GirlReading() {
               transform="translate(-158.524 -143.926)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M560.312 666.933c-5.697 2.339-6.113 9.923-11.5 12.5-26.04 12.459-53.589 22.568-72.5 40.5-44.193-30.01-85.154-123.218-32-164 18.144 10.617 34.351 18.215 34 0z"
               transform="translate(-158.524 -143.926)"
             ></path>
@@ -132,22 +133,22 @@ function GirlReading() {
               transform="translate(-158.524 -143.926)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M586.406 533.824H587.087V566.967H586.406z"
               transform="rotate(-54.3 367.157 632.992)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M551.368 593.577H615.397V594.259H551.368z"
               transform="rotate(-56.519 370.243 669.41)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M546.878 594.043H547.5600000000001V629.535H546.878z"
               transform="rotate(-53.656 325.667 696.548)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M518.352 567.505H582.393V568.186H518.352z"
               transform="rotate(-55.162 333.347 647.62)"
             ></path>
@@ -172,7 +173,7 @@ function GirlReading() {
               transform="translate(-158.524 -143.926)"
             ></path>
             <path
-              fill="#6c63ff"
+              fill={clothesColor}
               d="M537.312 630.933c-7.307 36.714-25.092 65.027-67 74-32.04-27.65-44.924-63.797-42.978-106.523a19.684 19.684 0 0121.442-18.708 19.674 19.674 0 0117.174 14.328l16.362 58.903 36.938-34.042z"
               transform="translate(-158.524 -143.926)"
             ></path>

@@ -4,12 +4,19 @@ import Google from "../social/google";
 import BoyReading from "../../images/boyReading";
 import EmailForm from "./emailForm";
 import history from "../../routing/history";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   return (
-    <div className="w-100 overflow-auto bg-theme">
-      <div style={{ maxWidth: "1200px" }} className="container-fluid my-4">
-        <div className="row no-gutters justify-content-center align-items-center shift bg-light">
+    <div
+      className="w-100 overflow-auto bg-theme px-2 py-4"
+      style={{ minHeight: "100%" }}
+    >
+      <div
+        style={{ maxWidth: "1200px", borderRadius: "15px", overflow: "hidden" }}
+        className="container-fluid shift"
+      >
+        <div className="row justify-content-center align-items-center shift bg-light">
           <div
             className="col py-3 d-none d-md-block"
             style={{
@@ -30,20 +37,23 @@ const Signup = () => {
             <div className="mb-3">
               <Facebook
                 text="Sign Up with Facebook"
-                purpose="signup"
+                onError={(message) => toast.error(message)}
               ></Facebook>
             </div>
             <div>
-              <Google text="Sign Up with Google" purpose="signup" on></Google>
+              <Google
+                text="Sign Up with Google"
+                onError={(message) => toast.error(message)}
+              ></Google>
             </div>
             <hr className="mt-4"></hr>
             <EmailForm></EmailForm>
-            <div className="text-center mt-4">
+            <div className="text-center mt-2">
               Already have an account?
               <span
                 className="btn-link"
                 onClick={() => {
-                  history.push({ pathname: "/login" });
+                  history.push("/login");
                 }}
                 style={{ color: "#ff8c8c", cursor: "pointer" }}
               >

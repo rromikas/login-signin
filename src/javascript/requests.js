@@ -1,6 +1,6 @@
-const origin = "http://localhost:5000";
+const origin = "https://cute-slime-longan.glitch.me";
 
-export const login = (user, callback) => {
+export const login = (user, callback = () => {}) => {
   fetch(`${origin}/users/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -14,7 +14,7 @@ export const login = (user, callback) => {
     .catch((er) => callback(er));
 };
 
-export const signup = (user, callback) => {
+export const signup = (user, callback = () => {}) => {
   if (user.password === user.password2) {
     fetch(`${origin}/users/signup`, {
       method: "POST",
@@ -31,7 +31,7 @@ export const signup = (user, callback) => {
   }
 };
 
-export const facebookSignup = (user, callback) => {
+export const facebookSignup = (user, callback = () => {}) => {
   fetch(`${origin}/users/facebookSignup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ export const facebookSignup = (user, callback) => {
     .catch((er) => callback({ error: er }));
 };
 
-export const googleSingup = (user, callback) => {
+export const googleSingup = (user, callback = () => {}) => {
   fetch(`${origin}/users/googleSignup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -56,7 +56,7 @@ export const googleSingup = (user, callback) => {
     })
     .catch((er) => callback({ error: er }));
 };
-export const update = (updatedUser, callback) => {
+export const update = (updatedUser, callback = () => {}) => {
   fetch(`${origin}/users/update`, {
     method: "POST",
     headers: {
