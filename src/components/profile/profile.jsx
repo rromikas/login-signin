@@ -17,8 +17,7 @@ const Profile = (props) => {
   useEffect(() => {
     read((res) => {
       if (res.error) {
-        alert(res.error);
-        // history.push("/login");
+        history.push("/login");
       } else {
         setUser((user) => Object.assign({}, user, res.data));
       }
