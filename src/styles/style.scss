@@ -1,5 +1,5 @@
 $themeMain: #f37373;
-$themMainContrast: rgb(76, 80, 143);
+$themeMainContrast: rgb(76, 80, 143);
 $themWhite: #f0f0f0;
 
 $convex: 12px 12px 24px #cfcfcf, -12px -12px 24px #f5f5f5;
@@ -35,6 +35,14 @@ body {
   background: transparent;
 }
 
+.soft-btn:active {
+  outline: none !important;
+  opacity: 0.8;
+}
+
+.soft-btn:focus {
+  outline: none !important;
+}
 .bg-light {
   background-color: $themWhite;
 }
@@ -75,7 +83,7 @@ body {
 // }
 
 .shift {
-  box-shadow: 7px 7px 19px rgba(0, 0, 0, 0.48);
+  box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.48);
 }
 
 .shn {
@@ -167,4 +175,39 @@ $heights: 100;
 .brdr-light {
   border: 1px solid $themeMain;
   outline: $themeMain;
+}
+
+.reject {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.bg-theme {
+  background: radial-gradient(at left top, #4c508f, #f37373);
+  background-size: cover;
 }

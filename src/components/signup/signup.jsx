@@ -4,16 +4,10 @@ import Google from "../social/google";
 import BoyReading from "../../images/boyReading";
 import EmailForm from "./emailForm";
 import history from "../../routing/history";
+
 const Signup = () => {
   return (
-    <div
-      className="w-100 overflow-auto"
-      style={{
-        background: "radial-gradient(at left top, #4c508f, #f37373)",
-        backgroundSize: "cover",
-        minHeight: "100%",
-      }}
-    >
+    <div className="w-100 overflow-auto bg-theme">
       <div style={{ maxWidth: "1200px" }} className="container-fluid my-4">
         <div className="row no-gutters justify-content-center align-items-center shift bg-light">
           <div
@@ -34,14 +28,17 @@ const Signup = () => {
             style={{ maxWidth: "400px" }}
           >
             <div className="mb-3">
-              <Facebook text="Sign Up with Facebook"></Facebook>
+              <Facebook
+                text="Sign Up with Facebook"
+                purpose="signup"
+              ></Facebook>
             </div>
             <div>
-              <Google text="Sign Up with Google"></Google>
+              <Google text="Sign Up with Google" purpose="signup" on></Google>
             </div>
             <hr className="mt-4"></hr>
             <EmailForm></EmailForm>
-            <div className="text-center mt-5">
+            <div className="text-center mt-4">
               Already have an account?
               <span
                 className="btn-link"

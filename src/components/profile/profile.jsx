@@ -1,21 +1,28 @@
-import React, { useState } from "react";
-import history from "../../routing/history";
+import React, { useState, useRef, useEffect } from "react";
 import { FaEdit, FaCheck, FaCamera } from "react-icons/fa";
 import RelaxReading from "../../images/relaxReading";
+import { update, read } from "../../javascript/requests";
+import PhotoUploader from "./photoUploader";
+import history from "../../routing/history";
+
 const Profile = () => {
-  const name = "Romas";
-  const [intro, setIntro] = useState(
-    "Introduce yourself, describe what genre of books you love"
-  );
+  const hiddenUploader = useRef(null);
+  const [user, setUser] = useState({ photo: "", name: "", description: "" });
   const [editIntro, setEditIntro] = useState(false);
+
+  useEffect(() => {
+    read((res) => {
+      console.log(res);
+      if (res.error) {
+        history.push({ pathname: "/login" });
+      } else {
+        setUser((user) => Object.assign({}, user, res.data));
+      }
+    });
+  }, []);
+
   return (
-    <div
-      className="w-100 h-100 overflow-auto py-4"
-      style={{
-        background: "radial-gradient(at left top, #4c508f, #f37373)",
-        backgroundSize: "cover",
-      }}
-    >
+    <div className="w-100 h-100 overflow-auto py-4 bg-theme">
       <div style={{ maxWidth: "1200px" }} className="container-fluid">
         <div className="row no-gutters justify-content-center shift bg-light">
           <div
@@ -36,16 +43,32 @@ const Profile = () => {
                     background: "white",
                     overflow: "hidden",
                     position: "relative",
+                    backgroundImage:
+                      user.photo !== "" ? `url(${user.photo})` : "unset",
+                    backgroundSize: "cover",
+                    backgorundPosition: "center",
                   }}
                 >
-                  <div className="w-100 d-flex justify-content-center img-uploader align-items-center pointer">
+                  <div
+                    className="w-100 d-flex justify-content-center img-uploader align-items-center pointer"
+                    onClick={() => hiddenUploader.current.click()}
+                  >
                     <FaCamera fontSize="20px" color="white"></FaCamera>
+                    <PhotoUploader
+                      domRef={hiddenUploader}
+                      onUpload={(photo) => {
+                        setUser((usr) =>
+                          Object.assign({}, usr, { photo: photo })
+                        );
+                        update({ photo: photo }, (res) => {});
+                      }}
+                    ></PhotoUploader>
                   </div>
                 </div>
               </div>
               <div className="col-12 mx-2 ml-md-3 mr-md-3">
                 <div className="text-center mt-3 h1" style={{ color: "white" }}>
-                  {name}
+                  {user.name}
                 </div>
                 <div className="text-center lead" style={{ color: "white" }}>
                   Member since 2018
@@ -61,7 +84,10 @@ const Profile = () => {
                   <FaCheck
                     className="pointer font-light"
                     fontSize="24px"
-                    onClick={() => setEditIntro(false)}
+                    onClick={() => {
+                      setEditIntro(false);
+                      update({ description: user.description });
+                    }}
                   ></FaCheck>
                 ) : (
                   <FaEdit
@@ -74,14 +100,21 @@ const Profile = () => {
             </div>
             <textarea
               disabled={!editIntro}
-              focused={editIntro}
               className={`${
                 !editIntro ? "borderless " : "brdr-light "
               }w-100 lead`}
-              style={{ background: "transparent", height: "15vh" }}
-            >
-              {intro}
-            </textarea>
+              style={{
+                background: "transparent",
+                height: "15vh",
+                minHeight: "100px",
+              }}
+              value={user.description}
+              onChange={(e) =>
+                setUser((usr) =>
+                  Object.assign({}, usr, { description: e.target.value })
+                )
+              }
+            ></textarea>
             <div
               className="w-100 d-none d-md-flex pr-4 justify-content-end mt-5 pb-2"
               style={{ height: "55vh" }}

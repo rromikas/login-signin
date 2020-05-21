@@ -1,21 +1,30 @@
 import { GoogleLogin } from "react-google-login";
 import React from "react";
 import GoogleIcon from "./googleIcon";
+import { googleSingup } from "../../javascript/requests";
+import history from "../../routing/history";
 
-const handleResponse = (response) => {
-  var res = {
+const handleResponse = (response, onError) => {
+  var user = {
+    accessToken: response.accessToken,
     name: response.profileObj.name,
     photoUrl: response.profileObj.imageUrl,
     email: response.profileObj.email,
   };
-  console.log(res);
+
+  googleSingup(user, (res) => {
+    console.log("google response", res);
+    if (res.error) {
+      onError(res.error);
+    } else {
+      console.log("token from google", res.token);
+      localStorage["secret_token"] = res.token;
+      history.push({ pathname: "/profile" });
+    }
+  });
 };
 
-const handleFailure = (err) => {
-  console.log(err);
-};
-
-const Google = ({ text }) => {
+const Google = ({ text, onError }) => {
   const clientId =
     "49004644590-v8t3iamk2h7a6r3flrkn3cjor47hrlkn.apps.googleusercontent.com";
   return (
@@ -35,10 +44,10 @@ const Google = ({ text }) => {
         </div>
       )}
       onSuccess={(res) => {
-        handleResponse(res, "google");
+        handleResponse(res, onError);
       }}
       onFailure={(er) => {
-        handleFailure(er, "google");
+        onError(er);
       }}
       cookiePolicy={"single_host_origin"}
     />

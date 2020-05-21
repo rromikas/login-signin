@@ -4,16 +4,10 @@ import Google from "../social/google";
 import GirlReading from "../../images/girlReading";
 import EmailForm from "./emailForm";
 import history from "../../routing/history";
+import { toast } from "react-toastify";
 const Login = () => {
   return (
-    <div
-      className="w-100 overflow-auto"
-      style={{
-        background: "radial-gradient(at left top, #4c508f, #f37373)",
-        backgroundSize: "cover",
-        minHeight: "100%",
-      }}
-    >
+    <div className="w-100 overflow-auto bg-theme">
       <div style={{ maxWidth: "1200px" }} className="container-fluid my-4">
         <div className="row no-gutters justify-content-center shift bg-light">
           <div
@@ -32,10 +26,16 @@ const Login = () => {
             style={{ maxWidth: "400px" }}
           >
             <div className="mb-3">
-              <Facebook text="Login with Facebook"></Facebook>
+              <Facebook
+                text="Login with Facebook"
+                onError={(message) => toast.error(message)}
+              ></Facebook>
             </div>
             <div>
-              <Google text="Login with Google"></Google>
+              <Google
+                text="Login with Google"
+                onError={(message) => toast.error(message)}
+              ></Google>
             </div>
             <div
               style={{

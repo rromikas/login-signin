@@ -26,6 +26,19 @@ body {
   background: transparent;
 }
 
+.soft-btn:active {
+  outline: none !important;
+  opacity: 0.8;
+}
+
+.soft-btn:focus {
+  outline: none !important;
+}
+
+.bg-light {
+  background-color: #f0f0f0;
+}
+
 .concave {
   -webkit-box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255, 255, 255, 0.34);
           box-shadow: inset 2px 2px 6px 0 rgba(0, 0, 0, 0.2), inset -3px -3px 5px 0 rgba(255, 255, 255, 0.34);
@@ -60,8 +73,8 @@ body {
 }
 
 .shift {
-  -webkit-box-shadow: 7px 7px 19px rgba(0, 0, 0, 0.48);
-          box-shadow: 7px 7px 19px rgba(0, 0, 0, 0.48);
+  -webkit-box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.48);
+          box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.48);
 }
 
 .shn {
@@ -948,5 +961,69 @@ body {
 .brdr-light {
   border: 1px solid #f37373;
   outline: #f37373;
+}
+
+.reject {
+  -webkit-animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+@-webkit-keyframes shake {
+  10%,
+  90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    -webkit-transform: translate3d(-1px, 0, 0);
+            transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    -webkit-transform: translate3d(2px, 0, 0);
+            transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translate3d(-4px, 0, 0);
+            transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    -webkit-transform: translate3d(4px, 0, 0);
+            transform: translate3d(4px, 0, 0);
+  }
+}
+
+.bg-theme {
+  background: radial-gradient(at left top, #4c508f, #f37373);
+  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */

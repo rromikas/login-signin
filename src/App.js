@@ -6,8 +6,8 @@ import Signup from "./components/signup/signup";
 import Profile from "./components/profile/profile";
 import TermsAndConditions from "./components/policies/termsAndConditions";
 import Test from "./components/test";
+import { ToastContainer } from "react-toastify";
 function App() {
-  console.log(Signup);
   return (
     <Router history={history}>
       <Switch>
@@ -21,6 +21,7 @@ function App() {
           component={TermsAndConditions}
         ></Route>
       </Switch>
+      <ToastContainer />
     </Router>
   );
 }
