@@ -81,7 +81,6 @@ export const read = (callback) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
       callback(res);
     })
     .catch((er) => {

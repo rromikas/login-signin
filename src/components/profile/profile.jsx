@@ -16,7 +16,6 @@ const Profile = (props) => {
 
   useEffect(() => {
     read((res) => {
-      console.log(res);
       if (res.error) {
         alert(res.error);
         // history.push("/login");
